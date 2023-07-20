@@ -8,5 +8,5 @@ RUN pip3 install -r r.txt
 
 COPY . /app
 
-CMD python3 dalle.py
+CMD python3 genStr.py
  
