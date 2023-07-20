@@ -1,6 +1,3 @@
-requests
+
 pyrogram 
-pymongo 
-bs4
-googletrans 
-cohere
+pyroaddon
