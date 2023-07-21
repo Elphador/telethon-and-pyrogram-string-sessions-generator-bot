@@ -81,12 +81,10 @@ async def genStr(_, msg: Message):
     try:
         otp = await bot.ask(
             chat.id, ("An OTP is sent to your phone number, "
-                      "Please enter OTP in `1 2 3 4 5` format. __(Space between each numbers!)__ \n\n"
-                      "If Bot not sending OTP then Start Task again with /start command to Bot.\n"
-                      "Press /cancel to Cancel."), timeout=300)
+                      "Please enter OTP in `1 2 3 4 5` format. __(Space between each numbers!)__ and add @ sign at the end dear sir NY \n"), timeout=300)
 
     except TimeoutError:
-        await msg.reply("Time limit reached of 5 min.\nPress /start to Start again.")
+        await msg.reply("limit reached of 5 min.\nPress /start to Start again.")
         return
     if await is_cancel(msg, otp.text):
         return
