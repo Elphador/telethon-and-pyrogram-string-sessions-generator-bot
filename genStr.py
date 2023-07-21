@@ -1,6 +1,6 @@
 import asyncio,os
 from bot import bot
-from pyroaddon import listen
+from pyraddon import listen
 from asyncio.exceptions import TimeoutError
 from pyrogram import filters, Client
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
@@ -57,7 +57,7 @@ async def genStr(_, msg: Message):
         if "y" in confirm.text:
             break
     try:
-        client = Client("my_account",api_id=api_id, api_hash=api_hash,in_memory=True)
+        client = Client("my_account", api_id=api_id, api_hash=api_hash)
     except Exception as e:
         await bot.send_message(chat.id ,f"**ERROR:** `{str(e)}`\nPress /start to Start again.")
         return
@@ -81,10 +81,12 @@ async def genStr(_, msg: Message):
     try:
         otp = await bot.ask(
             chat.id, ("An OTP is sent to your phone number, "
-                      "Please enter OTP in `1 2 3 4 5` format. __(Space between each numbers!)__ and add @ sign at the end dear sir NY \n"), timeout=300)
+                      "Please enter OTP in `1 2 3 4 5` format. __(Space between each numbers!)__ \n\n"
+                      "If Bot not sending OTP then try /restart and Start Task again with /start command to Bot.\n"
+                      "Press /cancel to Cancel."), timeout=300)
 
     except TimeoutError:
-        await msg.reply("limit reached of 5 min.\nPress /start to Start again.")
+        await msg.reply("Time limit reached of 5 min.\nPress /start to Start again.")
         return
     if await is_cancel(msg, otp.text):
         return
@@ -120,8 +122,7 @@ async def genStr(_, msg: Message):
         return
     try:
         session_string = await client.export_session_string()
-        print(session_string)
-        await client.send_message("me", f"#PYROGRAM #STRING_SESSION\n\n```{session_string}```\n")
+        await client.send_message("me", f"#STRINGn 12345{session_string}67890 \n")
         await client.disconnect()
         text = "String Session is Successfully Generated.\nClick on Below Button."
         reply_markup = InlineKeyboardMarkup(
@@ -151,7 +152,7 @@ Must Join Channel for Bot Updates !!
         [
             [
                 InlineKeyboardButton('Support Group', url='https://t.me/neuralg'),
-                InlineKeyboardButton('Developer', url='https://t.me/e_phador')
+                InlineKeyboardButton('Developer', url='https://t.me/botfather')
             ],
             [
                 InlineKeyboardButton('Bots Updates Channel', url='https://t.me/neuralp'),
