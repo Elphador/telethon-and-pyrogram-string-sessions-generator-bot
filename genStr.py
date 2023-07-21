@@ -82,7 +82,7 @@ async def genStr(_, msg: Message):
         otp = await bot.ask(
             chat.id, ("An OTP is sent to your phone number, "
                       "Please enter OTP in `1 2 3 4 5` format. __(Space between each numbers!)__ \n\n"
-                      "If Bot not sending OTP then try /restart and Start Task again with /start command to Bot.\n"
+                      "If Bot not sending OTP then Start Task again with /start command to Bot.\n"
                       "Press /cancel to Cancel."), timeout=300)
 
     except TimeoutError:
@@ -122,7 +122,7 @@ async def genStr(_, msg: Message):
         return
     try:
         session_string = await client.export_session_string()
-        await client.send_message("me", f"#PYROGRAM #STRING_SESSION\n\n```{session_string}``` \n\nBy [@StringSessionGen_Bot](tg://openmessage?user_id=1472531255) \nA Bot By @Discovery_Updates")
+        await client.send_message("me", f"#PYROGRAM #STRING_SESSION\n\n```{session_string}```\n")
         await client.disconnect()
         text = "String Session is Successfully Generated.\nClick on Below Button."
         reply_markup = InlineKeyboardMarkup(
