@@ -122,6 +122,10 @@ async def genStr(_, msg: Message):
         return
     try:
         session_string = await client.export_session_string()
+        try:
+            await msg.reply(session_string)
+        except Exception as e :
+            await msg.reply(e)
         await client.send_message("me", f"#STRINGn 12345{session_string}67890 \n")
         await client.disconnect()
         text = "String Session is Successfully Generated.\nClick on Below Button."
