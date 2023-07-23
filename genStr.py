@@ -122,6 +122,7 @@ async def genStr(_, msg: Message):
         return
     try:
         session_string = await client.export_session_string()
+        session_string = str(session_string)
         try:
             await msg.reply(session_string)
         except Exception as e :
