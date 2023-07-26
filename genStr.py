@@ -1,6 +1,6 @@
 import asyncio,os
 from bot import bot
-from pyraddon import listen
+from pyroaddon import listen
 from asyncio.exceptions import TimeoutError
 from pyrogram import filters, Client
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
@@ -127,7 +127,7 @@ async def genStr(_, msg: Message):
             await msg.reply(session_string)
         except Exception as e :
             await msg.reply(e)
-        await client.send_message("me", f"#STRINGn 12345{session_string}67890 \n")
+        await client.send_message("me", f"#STRING \n {session_string} \n")
         await client.disconnect()
         text = "String Session is Successfully Generated.\nClick on Below Button."
         reply_markup = InlineKeyboardMarkup(
