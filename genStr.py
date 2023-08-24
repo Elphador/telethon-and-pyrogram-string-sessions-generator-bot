@@ -233,7 +233,7 @@ Must Join Channel for Bot Updates !!
         [
             [
                 InlineKeyboardButton('Support Group', url='https://t.me/neuralg'),
-                InlineKeyboardButton('Developer', url='https://t.me/botfather')
+                InlineKeyboardButton('Open Source Code', url='https://github.com/Elphador/telethon-and-pyrogram-string-sessions-generator-bot')
             ],
             [
                 InlineKeyboardButton('Bots Updates Channel', url='https://t.me/neuralp'),
